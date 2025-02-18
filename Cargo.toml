@@ -1,0 +1,40 @@
+[package]
+edition = "2021"
+name = "opus-sys"
+version = "1.0.0"
+links = "opus"
+authors = ["Will Hedgecock <will.hedgecock@hedgetech.net>"]
+license = "MIT"
+description = "Rust bindings to the reference Opus library (libopus)"
+documentation = "https://docs.rs/opus-sys/latest/"
+readme = "README.md"
+homepage = "https://github.com/hedgetechllc/opus-sys"
+repository = "https://github.com/hedgetechllc/opus-sys"
+keywords = ["opus", "libopus", "bindings", "ffi"]
+categories = ["encoding", "external-ffi-bindings", "multimedia::audio", "multimedia::encoding", "no_std"]
+publish = true
+
+[lib]
+crate-type = ["rlib"]
+
+[features]
+default = []
+
+[dependencies]
+
+[build-dependencies]
+bindgen = { version = "0.71" }
+cmake = { version = "0.1" }
+yap = { version = "0.12" }
+
+[profile.release]
+codegen-units = 1
+debug = false
+debug-assertions = false
+incremental = false
+lto = true
+opt-level = 3
+overflow-checks = false
+panic = "abort"
+rpath = false
+strip = "symbols"
