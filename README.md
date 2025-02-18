@@ -9,6 +9,9 @@ capability without having to ensure that Opus is installed on the target system.
 The library is fully `no_std` compatible and represents the minimal amount of overhead
 or glue code needed to utilize `libopus` within a Rust project.
 
+Rust documentation can be found [here](https://docs.rs/opus-static-sys/latest), which
+corresponds directly to the `libopus` [documentation](https://opus-codec.org/docs/opus_api-1.5/).
+
 ## Building
 
 In order to use this crate, you will need both `cmake` and `clang` installed on your

@@ -1,5 +1,7 @@
 extern crate bindgen;
 
+use std::process::Command;
+
 // TODO: REPLACE ALL OF THIS WITH doxygen-bindgen = { version = "0.1" } ONCE EDITION 2024 IS RELEASED
 use std::error::Error;
 use yap::{IntoTokens, Tokens};
@@ -99,6 +101,21 @@ impl bindgen::callbacks::ParseCallbacks for ProcessComments {
 }
 
 fn main() {
+  if cfg!(target_os = "macos") {
+    if let Ok(output) = Command::new("rustc").args(&["--print", "deployment-target"]).output() {
+      if output.status.success() {
+        if let Some(target) = std::str::from_utf8(&output.stdout)
+          .unwrap()
+          .strip_prefix("deployment_target=")
+          .map(|v| v.trim())
+          .map(ToString::to_string)
+        {
+          std::env::set_var("MACOSX_DEPLOYMENT_TARGET", target);
+        }
+      }
+    }
+  }
+
   let dest = cmake::Config::new("opus")
     .profile("Release")
     .define("OPUS_BUILD_TESTING", "OFF")
@@ -107,10 +124,12 @@ fn main() {
     .define("OPUS_ENABLE_FLOAT_API", "ON")
     .define("OPUS_INSTALL_PKG_CONFIG_MODULE", "ON")
     .define("OPUS_INSTALL_CMAKE_CONFIG_MODULE", "ON")
-    .define("CMAKE_INTERPROCEDURAL_OPTIMIZATION", "ON")
+    .define("CMAKE_INTERPROCEDURAL_OPTIMIZATION", "TRUE")
     .build();
   println!("cargo:root={}", dest.display());
   println!("cargo:include={}/include", dest.display());
+  println!("cargo:lib_path={}/lib", dest.display());
+  println!("cargo:lib={}/lib/libopus.a", dest.display());
   println!("cargo:rustc-link-search=native={}/lib", dest.display());
   println!("cargo:rustc-link-lib=static=opus");
 
