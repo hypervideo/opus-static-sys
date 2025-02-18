@@ -1,25 +1,27 @@
-# Opus-Sys
+# About
 
-TODO
+`libopus-sys` is an FFI Rust-binding to the reference Opus library `libopus`.
 
-## Features
+It uses `bindgen` to dynamically generate all Rust bindings and documentation, and will
+always compile a static version of the underlying Opus library to ensure cross-system
+capability without having to ensure that Opus is installed on the target system.
 
-- Is `no_std` compatible with default features turned off
-- TODO
+The library is fully `no_std` compatible and represents the minimal amount of overhead
+or glue code needed to utilize `libopus` within a Rust project.
 
-## Getting Started
+## Building
 
-TODO
+In order to use this crate, you will need `cmake` installed on your build computer.
+
+## Installation
+
+To use, add the following to your `Cargo.toml` file:
+
+```
+[dependencies]
+libopus-sys = "1.0"
+```
 
 ## License
 
 This library is licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-
-## TODO
-
-- [ ] TODO
-Bugs should be filed at original C libopusenc repo
-Requires libopusenc to be installed on your computer
-pkg-config should be installed
-cmake should be installed if opus and/or libopusenc not present on system

@@ -1,15 +1,15 @@
 [package]
 edition = "2021"
-name = "opus-sys"
+name = "libopus-sys"
 version = "1.0.0"
 links = "opus"
 authors = ["Will Hedgecock <will.hedgecock@hedgetech.net>"]
 license = "MIT"
 description = "Rust bindings to the reference Opus library (libopus)"
-documentation = "https://docs.rs/opus-sys/latest/"
+documentation = "https://docs.rs/libopus-sys/latest/"
 readme = "README.md"
-homepage = "https://github.com/hedgetechllc/opus-sys"
-repository = "https://github.com/hedgetechllc/opus-sys"
+homepage = "https://github.com/hedgetechllc/libopus-sys"
+repository = "https://github.com/hedgetechllc/libopus-sys"
 keywords = ["opus", "libopus", "bindings", "ffi"]
 categories = ["encoding", "external-ffi-bindings", "multimedia::audio", "multimedia::encoding", "no_std"]
 publish = true
