@@ -1,9 +1,9 @@
 # About
 
-`libopus-sys` is an FFI Rust-binding to the reference Opus library `libopus`.
+`opus-static-sys` is an FFI Rust-binding to the reference Opus library `libopus`.
 
 It uses `bindgen` to dynamically generate all Rust bindings and documentation, and will
-always compile a static version of the underlying Opus library to ensure cross-system
+always compile a **static** version of the underlying Opus library to ensure cross-system
 capability without having to ensure that Opus is installed on the target system.
 
 The library is fully `no_std` compatible and represents the minimal amount of overhead
@@ -19,7 +19,7 @@ To use, add the following to your `Cargo.toml` file:
 
 ```
 [dependencies]
-libopus-sys = "1.0"
+opus-static-sys = "1.0"
 ```
 
 ## License
