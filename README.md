@@ -11,7 +11,14 @@ or glue code needed to utilize `libopus` within a Rust project.
 
 ## Building
 
-In order to use this crate, you will need `cmake` installed on your build computer.
+In order to use this crate, you will need both `cmake` and `clang` installed on your
+build computer. Most Linux-based operating systems provide these via the built-in package
+manager under:
+
+* Clang: `libclang-dev`, `libclang`, `llvm`, or `clang`. On Windows, you may need to manually
+install Clang from the [Official Download Page](https://releases.llvm.org/download.html) and
+set a corresponding `LIBCLANG_PATH` environment variable.
+* Cmake: `cmake` or from the [Clang Download Page](https://cmake.org/download/) for Windows.
 
 ## Installation
 
