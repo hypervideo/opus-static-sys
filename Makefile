@@ -24,8 +24,7 @@ update:
 	cargo update
 	git submodule update
 	git add opus
-	git commit -m "opus submodule updated"
-	git push
+	$(shell if git diff-index --quiet HEAD --; then git commit -m "opus submodule updated" && git push; fi)
 
 publish:
 	cargo publish
