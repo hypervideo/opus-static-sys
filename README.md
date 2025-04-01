@@ -25,7 +25,7 @@ To use, add the following to your `Cargo.toml` file:
 
 ```
 [dependencies]
-opus-static-sys = "1.0"
+opus-static-sys = "1.5"
 ```
 
 ## License
