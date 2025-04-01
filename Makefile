@@ -5,6 +5,7 @@ all:
 
 clean:
 	cargo clean
+	cd bindings && cargo clean && rm -f Cargo.lock
 	@rm -rf pkg target*
 
 format:
@@ -22,9 +23,9 @@ docs:
 
 update:
 	cargo update
-	git submodule update
+	git submodule foreach git pull origin main
 	git add opus
-	$(shell if git diff-index --quiet HEAD --; then git commit -m "opus submodule updated" && git push; fi)
+	cd bindings && cargo build --release
 
 publish:
 	cargo publish

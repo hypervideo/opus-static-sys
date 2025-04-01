@@ -1,7 +1,7 @@
 [package]
-edition = "2021"
+edition = "2024"
 name = "opus-static-sys"
-version = "1.0.1"
+version = "1.5.0"
 links = "opus"
 authors = ["Will Hedgecock <will.hedgecock@hedgetech.net>"]
 license = "MIT"
@@ -23,9 +23,7 @@ default = []
 [dependencies]
 
 [build-dependencies]
-bindgen = { version = "0.71" }
 cmake = { version = "0.1" }
-yap = { version = "0.12" }
 
 [profile.release]
 codegen-units = 1

@@ -14,14 +14,10 @@ corresponds directly to the `libopus` [documentation](https://opus-codec.org/doc
 
 ## Building
 
-In order to use this crate, you will need both `cmake` and `clang` installed on your
-build computer. Most Linux-based operating systems provide these via the built-in package
-manager under:
-
-* Clang: `libclang-dev`, `libclang`, `llvm`, or `clang`. On Windows, you may need to manually
-install Clang from the [Official Download Page](https://releases.llvm.org/download.html) and
-set a corresponding `LIBCLANG_PATH` environment variable.
-* Cmake: `cmake` or from the [Clang Download Page](https://cmake.org/download/) for Windows.
+In order to use this crate, you will need `cmake` installed on your build computer. Most
+Linux-based operating systems provide this via the built-in package manager. It is available
+on MacOS from `Homebrew`. On Windows, it should have been installed by default when you
+installed the Visual Studio compiler.
 
 ## Installation
 
