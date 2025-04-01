@@ -1,7 +1,7 @@
 [package]
 edition = "2024"
 name = "opus-static-sys"
-version = "1.5.1"
+version = "1.5.2"
 links = "opus"
 authors = ["Will Hedgecock <will.hedgecock@hedgetech.net>"]
 license = "MIT"
