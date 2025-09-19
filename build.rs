@@ -26,7 +26,7 @@ fn main() {
     .define("OPUS_ENABLE_FLOAT_API", "ON")
     .define("OPUS_INSTALL_PKG_CONFIG_MODULE", "ON")
     .define("OPUS_INSTALL_CMAKE_CONFIG_MODULE", "ON")
-    .define("CMAKE_INTERPROCEDURAL_OPTIMIZATION", "TRUE")
+    .define("CMAKE_INTERPROCEDURAL_OPTIMIZATION", "OFF")
     .build();
   println!("cargo:root={}", dest.display());
 #[cfg(target_os = "windows")]
