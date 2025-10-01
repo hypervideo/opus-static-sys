@@ -29,19 +29,25 @@ fn main() {
     .define("CMAKE_INTERPROCEDURAL_OPTIMIZATION", "OFF")
     .build();
   println!("cargo:root={}", dest.display());
-#[cfg(target_os = "windows")]
-{
-  println!("cargo:include={}\\include", dest.display());
-  println!("cargo:lib_path={}\\lib", dest.display());
-  println!("cargo:lib={}\\lib\\opus.lib", dest.display());
-  println!("cargo:rustc-link-search=native={}\\lib", dest.display());
-}
-#[cfg(not(target_os = "windows"))]
-{
-  println!("cargo:include={}/include", dest.display());
-  println!("cargo:lib_path={}/lib", dest.display());
-  println!("cargo:lib={}/lib/libopus.a", dest.display());
-  println!("cargo:rustc-link-search=native={}/lib", dest.display());
-}
+  #[cfg(target_os = "windows")]
+  {
+    println!("cargo:include={}\\include", dest.display());
+    println!("cargo:lib_path={}\\lib", dest.display());
+    println!("cargo:lib={}\\lib\\opus.lib", dest.display());
+    println!("cargo:rustc-link-search=native={}\\lib", dest.display());
+  }
+  #[cfg(not(target_os = "windows"))]
+  {
+    let lib_dir = if std::path::Path::new(&format!("{}/lib", dest.display())).exists() {
+      format!("{}/lib", dest.display())
+    } else {
+      format!("{}/lib64", dest.display())
+    };
+
+    println!("cargo:include={}/include", dest.display());
+    println!("cargo:lib_path={}", lib_dir);
+    println!("cargo:lib={}/libopus.a", lib_dir);
+    println!("cargo:rustc-link-search=native={}", lib_dir);
+  }
   println!("cargo:rustc-link-lib=static=opus");
 }
